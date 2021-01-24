@@ -1,0 +1,16 @@
+--1
+Select * from film
+Inner join film_actor
+On film.film_id = film_actor.film_id
+
+--2
+Select * from actor
+Inner join film_actor
+On actor.actor_id = film_actor.actor_id
+
+--3
+Select * from actor
+Inner join film_actor
+On actor.actor_id = film_actor.actor_id
+Inner join film
+On film.film_id = film_actor.film_id
