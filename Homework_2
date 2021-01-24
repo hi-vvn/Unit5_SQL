@@ -1,0 +1,29 @@
+--1
+Select * from film
+Inner join film_actor
+On film.film_id = film_actor.film_id
+
+--2
+Select * from actor
+Inner join film_actor
+On actor.actor_id = film_actor.actor_id
+
+--3
+Select * from actor
+Inner join film_actor
+On actor.actor_id = film_actor.actor_id
+Inner join film
+On film.film_id = film_actor.film_id
+
+
+SELECT
+  student.first_name,
+  student.last_name,
+  course.name
+FROM student
+JOIN student_course
+  ON student.id = student_course.student_id
+JOIN course
+  ON course.id = student_course.course_id;
+
+
