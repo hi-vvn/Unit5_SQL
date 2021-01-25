@@ -1,0 +1,42 @@
+-- Create a videos table
+Create table videos 
+(video_ID serial Primary Key, 
+title Varchar(255) NOT null, 
+length float NOT null,
+URL Varchar (255) NOT null);
+
+-- Populate the table with at least three related videos from Youtube 
+Insert into videos (title, length, URL)
+Values ('Rating the Best & Worst Skincare Brands x James Welsch', 22.19, 'https://www.youtube.com/watch?v=WrzHM2KBUMI'),
+('The Best Serums of 2020!', 13.28, 'https://www.youtube.com/watch?v=SnERVJbzHlA'),
+('Skincare Ingredients You Should Never Mix', 13.46, 'https://www.youtube.com/watch?v=QrDtgAqJxKQ');
+
+-- Check
+Select * from videos
+
+-- Create reviewers table
+Create table reviewers
+(ID serial Primary Key,
+video_id serial NOT null
+references videos (video_id) on update cascade,
+username Varchar (255) NOT null,
+rating int,
+review Varchar (255) NOT null);
+
+-- Populate reviewers table
+Insert into reviewers (video_id, username, rating, review)
+Values
+(1, 'Masthora', 5, 'Love you James! Just recently discovered your channnel but am ready to binge watch the rest of your videos'),
+(1, 'Steph', 4, 'Loved this but it was a tad lengthy and the amount of ads was a lil much'),
+(2, 'Yangji', 5, 'Great video, will try out that first serum'),
+(2, 'Jess', 3, 'I like you but your content is getting repetitive'),
+(3, 'Sophia', 5, 'QUEEN'),
+(3, 'Sakib', 5, 'Beautiful and educated');
+
+--Check
+Select * from reviewers
+
+--Join both tables
+Select * from videos 
+full outer join reviewers
+on videos.video_id = reviewers.video_id
